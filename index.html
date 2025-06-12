@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grub - Neobrutalist Food Delivery</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#FF4B4B',
+                        secondary: '#00BFA6',
+                        accent: '#FFD700',
+                        dark: '#1A1A1A',
+                        light: '#F8F9FA',
+                        success: '#4CAF50',
+                        warning: '#FFC107',
+                    },
+                    fontFamily: {
+                        'space': ['Space Grotesk', 'sans-serif'],
+                        'jakarta': ['Plus Jakarta Sans', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+        .neobrutalist {
+            border: 3px solid #000;
+            box-shadow: 5px 5px 0px #000;
+            transition: all 0.2s ease;
+        }
+        .neobrutalist:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: 7px 7px 0px #000;
+        }
+        .neobrutalist:active {
+            transform: translate(0px, 0px);
+            box-shadow: 3px 3px 0px #000;
+        }
+        .fade-in {
+            animation: fadeIn 0.8s ease-in;
+        }
+        .slide-in {
+            animation: slideIn 0.6s ease-out;
+        }
+        .bounce-hover:hover {
+            animation: bounce 1s ease infinite;
+        }
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes slideIn {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        .hover-scale {
+            transition: transform 0.3s ease;
+        }
+        .hover-scale:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body class="bg-light">
+    <!-- Navbar -->
+    <nav class="bg-white neobrutalist fixed w-full z-10">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center h-16">
+                <div class="text-2xl font-bold text-primary fade-in font-space">Grub</div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="text-dark hover:text-primary transition neobrutalist px-4 py-2 font-space">Home</a>
+                    <a href="#menu" class="text-dark hover:text-primary transition neobrutalist px-4 py-2 font-space">Menu</a>
+                    <a href="#categories" class="text-dark hover:text-primary transition neobrutalist px-4 py-2 font-space">Categories</a>
+                    <a href="#offers" class="text-dark hover:text-primary transition neobrutalist px-4 py-2 font-space">Offers</a>
+                    <a href="#about" class="text-dark hover:text-primary transition neobrutalist px-4 py-2 font-space">About</a>
+                    <a href="#contact" class="text-dark hover:text-primary transition neobrutalist px-4 py-2 font-space">Contact</a>
+                </div>
+                <button class="md:hidden neobrutalist p-2">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Home Section -->
+    <section id="home" class="pt-24 pb-12 md:pt-32 md:pb-20">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-8 md:mb-0 slide-in">
+                    <h1 class="text-4xl md:text-5xl font-bold text-dark mb-4 font-space">
+                        Delicious Food<br>
+                        <span class="text-primary">Delivered to You</span>
+                    </h1>
+                    <p class="text-dark mb-8 text-lg">Experience the best local cuisine delivered right to your doorstep. Fast, fresh, and fabulous!</p>
+                    <button class="bg-primary text-white px-8 py-3 neobrutalist pulse font-space text-lg">
+                        Order Now
+                    </button>
+                </div>
+                <div class="md:w-1/2 fade-in">
+                    <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" 
+                         alt="Delicious Food" 
+                         class="rounded-lg neobrutalist hover-scale">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section id="menu" class="py-12 bg-white ">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 slide-in neobrutalist inline-block px-8 py-4 font-space">Our Menu</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="neobrutalist p-6 bg-accent">
+                    <h3 class="text-xl font-bold mb-4 font-space">Signature Dishes</h3>
+                    <ul class="space-y-2">
+
+
+                        <li class="flex  justify-between">
+                            <span>Grub Burger</span>
+                            <span class="font-space">$12.99</span>
+                        </li>
+                        <li class="flex justify-between">
+
+                            <span>Loaded Fries</span>
+                            <span class="font-space">$8.99</span>
+                        </li>
+                        <li class="flex justify-between">
+                            <span>Mega Pizza</span>
+                            <span class="font-space">$24.99</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="neobrutalist p-6 bg-primary">
+             <h3 class="text-xl font-bold mb-4 font-space">Daily Specials</h3>
+                    <ul class="space-y-2">
+                        <li class="flex justify-between">
+                            <span>Chef's Special</span>
+                            <span class="font-space">$15.99</span>
+                           </li>
+                           <li class="flex justify-between">
+                  <span>Weekend Brunch</span>
+                  <span class="font-space">$18.99</span>
+              </li>
+           <li class="flex justify-between">
+               <span>Happy Hour</span>
+                            <span class="font-space">$9.99</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="neobrutalist p-6 bg-secondary">
+                    <h3 class="text-xl font-bold mb-4 font-space">Healthy Options</h3>
+                    <ul class="space-y-2">
+                        <li class="flex justify-between">
+                            <span>Quinoa Bowl</span>
+                            <span class="font-space">$14.99</span>
+                </li>
+                        <li class="flex justify-between">
+                                        <span>Green Salad</span>
+                            <span class="font-space">$10.99</span>
+                        </li>
+                        <li class="flex justify-between">
+                            <span>Vegan Wrap</span>
+                            <span class="font-space">$11.99</span>
+                        </li>
+                    </ul>
+                </div>
+    </div>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section id="categories" class="py-12 bg-accent">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 slide-in neobrutalist inline-block px-8 py-4 font-space">Popular Categories</h2>
+     <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+         <div class="bg-white p-6 neobrutalist hover-scale fade-in" style="animation-delay: 0.1s">
+             <div class="text-4xl mb-4 bounce-hover">🍕</div>
+             <h3 class="font-semibold font-space">Pizza</h3>
+                 </div>
+                 <div class="bg-white p-6 neobrutalist hover-scale fade-in" style="animation-delay: 0.2s">
+                       <div class="text-4xl mb-4 bounce-hover">🍔</div>
+                            <h3 class="font-semibold font-space">Burgers</h3>
+                               </div>
+                          <div class="bg-white p-6 neobrutalist hover-scale fade-in" style="animation-delay: 0.3s">
+                       <div class="text-4xl mb-4 bounce-hover">🍜</div>
+                       <h3 class="font-semibold font-space">Asian</h3>
+           </div>
+           <div class="bg-white p-6 neobrutalist hover-scale fade-in" style="animation-delay: 0.4s">
+             <div class="text-4xl mb-4 bounce-hover">🥗</div>
+             <h3 class="font-semibold font-space">Healthy</h3>
+         </div>
+     </div>
+        </div>
+    </section>
+
+    <!-- Offers Section -->
+    <section id="offers" class="py-12 bg-white">
+              <div class="container mx-auto px-4">
+                  <div class="bg-primary neobrutalist p-8 md:p-12 slide-in">
+                      <div class="flex flex-col md:flex-row items-center justify-between">
+                          <div class="md:w-1/2 mb-8 md:mb-0">
+                        <h2 class="text-3xl font-bold mb-4 font-space">Special Offer!</h2>
+                         <p class="text-light mb-6 text-lg">Get 20% off on your first order. Use code: WELCOME20</p>
+                         <button class="bg-accent text-dark px-8 py-3 neobrutalist pulse font-space text-lg">
+                             Claim Offer
+                     </button>
+                </div>
+                <div class="md:w-1/2 text-center">
+                <div class="text-6xl bounce-hover">🎉</div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-12 bg-accent">
+        <div class="container mx-auto px-4">
+              <div class="max-w-3xl mx-auto">
+                  <h2 class="text-3xl font-bold text-center mb-12 slide-in neobrutalist inline-block px-8 py-4 font-space">About Grub</h2>
+                  <div class="bg-white neobrutalist p-8">
+           <p class="text-lg mb-6">Grub is not just a food delivery service - we're a community of food lovers passionate about bringing the best local cuisine to your doorstep.</p>
+         <p class="text-lg mb-6">Founded in 2024, we've quickly become the go-to platform for foodies who value quality, speed, and exceptional service.</p>
+         <div class="grid grid-cols-3 gap-4 text-center">
+             <div class="neobrutalist p-4">
+                                    <div class="text-2xl font-bold text-primary font-space">1000+</div>
+                              <div>Happy Customers</div>
+                          </div>
+                          <div class="neobrutalist p-4">
+                      <div class="text-2xl font-bold text-primary font-space">50+</div>
+                        <div>Restaurant Partners</div>
+                    </div>
+                    <div class="neobrutalist p-4">
+                         <div class="text-2xl font-bold text-primary font-space">30min</div>
+                             <div>Average Delivery</div>
+                         </div>
+                     </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-12 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 slide-in neobrutalist inline-block px-8 py-4 font-space">Contact Us</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div class="neobrutalist p-8 bg-accent">
+            <h3 class="text-xl font-bold mb-4 font-space">Get in Touch</h3>
+            <form class="space-y-4">
+                        <div>
+                        <input type="text" placeholder="Your Name" class="w-full p-3 neobrutalist font-jakarta">
+                    </div>
+                    <div>
+                                <input type="email" placeholder="Your Email" class="w-full p-3 neobrutalist font-jakarta">
+                     </div>
+                     <div>
+                 <textarea placeholder="Your Message" class="w-full p-3 neobrutalist font-jakarta" rows="4"></textarea>
+                 </div>
+         <button class="bg-primary text-white px-8 py-3 neobrutalist font-space text-lg">
+             Send Message
+         </button>
+            </form>
+        </div>
+             <div class="neobrutalist p-8 bg-primary">
+                 <h3 class="text-xl font-bold mb-4 font-space">Contact Info</h3>
+                         <ul class="space-y-4">
+                              <li class="flex items-center space-x-3">
+                                  <span class="text-2xl">📍</span>
+                                  <span>123 Food Street, City, State 12345</span>
+                          </li>
+                     <li class="flex items-center space-x-3">
+                     <span class="text-2xl">📞</span>
+                     <span>(555) 123-4567</span>
+                </li>
+                <li class="flex items-center space-x-3">
+                    <span class="text-2xl">✉️</span>
+                <span>contact@grub.com</span>
+         </li>
+         </ul>
+         <div class="mt-8">
+             <h4 class="font-bold mb-4 font-space">Follow Us</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="neobrutalist p-3 font-space">Facebook</a>
+                                <a href="#" class="neobrutalist p-3 font-space">Twitter</a>
+                                   <a href="#" class="neobrutalist p-3 font-space">Instagram</a>
+                               </div>
+                           </div>
+                       </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-12">
+   <div class="container mx-auto px-4">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+    <div class="fade-in">
+        <h3 class="text-xl font-bold mb-4 font-space">Grub</h3>
+        <p class="text-gray-400">Delivering happiness to your doorstep.</p>
+    </div>
+    <div class="fade-in" style="animation-delay: 0.1s">
+        <h4 class="font-semibold mb-4 font-space">Quick Links</h4>
+                        <ul class="space-y-2">
+                                   <li><a href="#home" class="text-gray-400 hover:text-white transition">Home</a></li>
+                                   <li><a href="#menu" class="text-gray-400 hover:text-white transition">Menu</a></li>
+                                   <li><a href="#categories" class="text-gray-400 hover:text-white transition">Categories</a></li>
+                           <li><a href="#offers" class="text-gray-400 hover:text-white transition">Offers</a></li>
+                       </ul>
+                   </div>
+                   <div class="fade-in" style="animation-delay: 0.2s">
+            <h4 class="font-semibold mb-4 font-space">Contact</h4>
+            <ul class="space-y-2 text-gray-400">
+                <li>123 Food Street</li>
+                <li>City, State 12345</li>
+                   <li>contact@grub.com</li>
+                   <li>(555) 123-4567</li>
+               </ul>
+           </div>
+           <div class="fade-in" style="animation-delay: 0.3s">
+               <h4 class="font-semibold mb-4 font-space">Follow Us</h4>
+               <div class="flex space-x-4">
+                   <a href="#" class="text-gray-400 hover:text-white transition">Facebook</a>
+                              <a href="#" class="text-gray-400 hover:text-white transition">Twitter</a>
+                        <a href="#" class="text-gray-400 hover:text-white transition">Instagram</a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400 fade-in">
+                <p>&copy; 2024 Grub. All rights reserved.</p>
+            </div>
+  </div>
+    </footer>
+</body>
+</html> 
